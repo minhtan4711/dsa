@@ -1,36 +1,31 @@
-senate = "DRRDRDRDRDDRDRDR"
-
-result = [1] * len(senate)
-countRadiant = 0
-countDire = 0
+from collections import deque
 
 
-i = 0
-while i < len(senate):
-    if result[i] == 0:
-        i += 1
-    elif result[i] != 0 and (i == len(senate) - 1) and senate[i] != senate[0]:
-        result[0] = 0
-        i += 1
-    elif result[i] != 0 and (i == len(senate) - 1) and senate[i] == senate[0]:
-        i += 1
-    elif result[i] != 0 and senate[i] != senate[i + 1]:
-        result[i + 1] = 0
-        i += 1
-    elif result[i] != 0 and senate[i] == senate[i + 1]:
-        i += 1
-    else:
-        i += 1
+class Solution(object):
+    def predictPartyVictory(self, senate):
+        """
+        :type senate: str
+        :rtype: str
+        """
+        dQ = deque()
+        rQ = deque()
 
-print(result)
+        for i in range(len(senate)):
+            if senate[i] == "D":
+                dQ.append(i)
+            elif senate[i] == "R":
+                rQ.append(i)
 
-for i in range(len(result)):
-    if result[i] == 1 and senate[i] == 'R':
-        countRadiant += 1
-    elif result[i] == 1 and senate[i] == 'D':
-        countDire += 1
+        while dQ and rQ:
+            d_idx = dQ.popleft()
+            r_idx = rQ.popleft()
 
-if countRadiant > countDire:
-    print('Radiant')
-else:
-    print('Dire')
+            if d_idx < r_idx:
+                dQ.append(d_idx + len(senate))
+            else:
+                rQ.append(r_idx + len(senate))
+
+        if dQ:
+            return "Dire"
+        else:
+            return "Radiant"
