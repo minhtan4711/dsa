@@ -4,12 +4,15 @@ class ListNode:
         self.val = val
         self.next = next
 
+
 class LinkedList:
     def __init__(self, data):
         self.data = data
         self.next = None
 
 # brute force
+
+
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         # node count
@@ -19,10 +22,10 @@ class Solution:
             cnt += 1
             cur_node = cur_node.next
         # handle edge case
-        if cnt == 1: 
+        if cnt == 1:
             head = None
             return head
-        
+
         pivot = 0
         middle_pos = math.floor(cnt / 2)
         middle_node = head
@@ -38,15 +41,19 @@ class Solution:
 
 # two pointer
 # Definition for singly-linked list.
+
+
 class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
 
+
 class LinkedList:
     def __init__(self, data):
         self.data = data
         self.next = None
+
 
 class Solution:
     def deleteMiddle(self, head: Optional[ListNode]) -> Optional[ListNode]:
@@ -61,5 +68,3 @@ class Solution:
             fast = fast.next.next
         slow.next = slow.next.next
         return head
-
-

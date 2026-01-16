@@ -7,6 +7,6 @@ class Solution:
             if price < min_price:
                 min_price = price
             profit = price - min_price
-            if profit > best_profit: best_profit = profit
+            if profit > best_profit:
+                best_profit = profit
         return best_profit
-        

@@ -34,9 +34,13 @@ def mergeAlternately(word1, word2):
             j += 1
     return result
 
+
 def checkLength(self, word1, word2):
-    if len(word1) > len(word2): return True
-    else: return False
+    if len(word1) > len(word2):
+        return True
+    else:
+        return False
+
 
 def getExcessPart(self, properLength, word):
     return word[properLength:]

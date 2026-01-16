@@ -3,7 +3,6 @@ class Solution:
         hash_map = {}
         result = []
 
-
         for k, v in enumerate(nums):
             sub = target - v
             if sub in hash_map:
